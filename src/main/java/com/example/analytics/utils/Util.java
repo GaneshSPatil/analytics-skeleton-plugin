@@ -18,9 +18,12 @@ package com.example.analytics.utils;
 
 import com.example.analytics.executors.GetViewRequestExecutor;
 import com.google.common.base.Charsets;
+import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Properties;
@@ -42,6 +45,14 @@ public class Util {
             return (String) properties.get("pluginId");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static byte[] readResourceBytes(String resourceFile) {
+        try (InputStream in = GetViewRequestExecutor.class.getResourceAsStream(resourceFile)) {
+            return ByteStreams.toByteArray(in);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not find resource " + resourceFile, e);
         }
     }
 }

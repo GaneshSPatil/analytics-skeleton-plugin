@@ -17,6 +17,7 @@
 package com.example.analytics;
 
 import com.example.analytics.executors.GetPluginConfigurationExecutor;
+import com.example.analytics.executors.GetPluginIconExecutor;
 import com.example.analytics.executors.GetViewRequestExecutor;
 import com.example.analytics.executors.NotificationInterestedInExecutor;
 import com.example.analytics.requests.StageStatusRequest;
@@ -28,9 +29,11 @@ import com.thoughtworks.go.plugin.api.annotation.Extension;
 import com.thoughtworks.go.plugin.api.exceptions.UnhandledRequestTypeException;
 import com.thoughtworks.go.plugin.api.logging.Logger;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
+import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
 import static com.example.analytics.Constants.PLUGIN_IDENTIFIER;
+import static com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse.SUCCESS_RESPONSE_CODE;
 
 @Extension
 public class ExamplePlugin implements GoPlugin {
@@ -50,16 +53,28 @@ public class ExamplePlugin implements GoPlugin {
     public GoPluginApiResponse handle(GoPluginApiRequest request) throws UnhandledRequestTypeException {
         try {
             switch (Request.fromString(request.requestName())) {
-                case PLUGIN_SETTINGS_GET_VIEW:
-                    return new GetViewRequestExecutor().execute();
+                case REQUEST_GET_PLUGIN_ICON:
+                    return new GetPluginIconExecutor().execute();
+//                case REQUEST_GET_CAPABILITIES:
+//                    return new GetCapabilitiesExecutor().execute();
+//                case REQUEST_GET_ANALYTICS:
+//                    return AnalyticsExecutorSelector.executorFor(request, DBAccess.instance().sessionFactory()).execute();
+//                case REQUEST_GET_STATIC_ASSETS:
+//                    return new GetStaticAssetsExecutor(ASSETS_RESOURCE).execute();
                 case REQUEST_NOTIFICATIONS_INTERESTED_IN:
                     return new NotificationInterestedInExecutor().execute();
                 case REQUEST_STAGE_STATUS:
                     return StageStatusRequest.fromJSON(request.requestBody()).executor(pluginRequest).execute();
+
+                case PLUGIN_SETTINGS_GET_VIEW:
+                    return new GetViewRequestExecutor().execute();
                 case PLUGIN_SETTINGS_GET_CONFIGURATION:
                     return new GetPluginConfigurationExecutor().execute();
                 case PLUGIN_SETTINGS_VALIDATE_CONFIGURATION:
                     return ValidatePluginSettings.fromJSON(request.requestBody()).executor().execute();
+//                case PLUGIN_SETTINGS_CHANGE_NOTIFICATION:
+//                    reInitializePlugin(PluginSettings.fromJSON(request.requestBody()));
+//                    return new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, "");\
                 default:
                     throw new UnhandledRequestTypeException(request.requestName());
             }
