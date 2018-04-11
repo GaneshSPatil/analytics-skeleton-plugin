@@ -16,15 +16,15 @@
 
 apply plugin: 'java'
 
-group = 'com.example.notification.template'
+group = 'com.example.analytics.template'
 version = '0.1-SNAPSHOT'
 
 // these values that go into plugin.xml
 project.ext.pluginDesc = [
-    id         : 'com.example.notification.systemout',
+    id         : 'com.example.analytics.systemout',
     version    : project.version,
     goCdVersion: '16.2.1',
-    name       : 'Example Notification Plugin that prints to `System.out`',
+    name       : 'Example analytics Plugin',
     description: 'Some longer description of your plugin goes here',
     vendorName : 'Acme Corp',
     vendorUrl  : 'https://github.com/user/repository'
