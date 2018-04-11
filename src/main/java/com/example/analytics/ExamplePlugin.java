@@ -16,10 +16,7 @@
 
 package com.example.analytics;
 
-import com.example.analytics.executors.GetPluginConfigurationExecutor;
-import com.example.analytics.executors.GetPluginIconExecutor;
-import com.example.analytics.executors.GetViewRequestExecutor;
-import com.example.analytics.executors.NotificationInterestedInExecutor;
+import com.example.analytics.executors.*;
 import com.example.analytics.requests.StageStatusRequest;
 import com.example.analytics.requests.ValidatePluginSettings;
 import com.thoughtworks.go.plugin.api.GoApplicationAccessor;
@@ -55,8 +52,8 @@ public class ExamplePlugin implements GoPlugin {
             switch (Request.fromString(request.requestName())) {
                 case REQUEST_GET_PLUGIN_ICON:
                     return new GetPluginIconExecutor().execute();
-//                case REQUEST_GET_CAPABILITIES:
-//                    return new GetCapabilitiesExecutor().execute();
+                case REQUEST_GET_CAPABILITIES:
+                    return new GetCapabilitiesExecutor().execute();
 //                case REQUEST_GET_ANALYTICS:
 //                    return AnalyticsExecutorSelector.executorFor(request, DBAccess.instance().sessionFactory()).execute();
 //                case REQUEST_GET_STATIC_ASSETS:
