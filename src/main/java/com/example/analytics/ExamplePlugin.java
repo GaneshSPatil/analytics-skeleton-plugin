@@ -26,11 +26,9 @@ import com.thoughtworks.go.plugin.api.annotation.Extension;
 import com.thoughtworks.go.plugin.api.exceptions.UnhandledRequestTypeException;
 import com.thoughtworks.go.plugin.api.logging.Logger;
 import com.thoughtworks.go.plugin.api.request.GoPluginApiRequest;
-import com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse;
 import com.thoughtworks.go.plugin.api.response.GoPluginApiResponse;
 
 import static com.example.analytics.Constants.PLUGIN_IDENTIFIER;
-import static com.thoughtworks.go.plugin.api.response.DefaultGoPluginApiResponse.SUCCESS_RESPONSE_CODE;
 
 @Extension
 public class ExamplePlugin implements GoPlugin {
@@ -39,6 +37,7 @@ public class ExamplePlugin implements GoPlugin {
 
     private GoApplicationAccessor accessor;
     private PluginRequest pluginRequest;
+    private static final String ASSETS_RESOURCE = "/assets.zip";
 
     @Override
     public void initializeGoApplicationAccessor(GoApplicationAccessor accessor) {
@@ -54,10 +53,11 @@ public class ExamplePlugin implements GoPlugin {
                     return new GetPluginIconExecutor().execute();
                 case REQUEST_GET_CAPABILITIES:
                     return new GetCapabilitiesExecutor().execute();
+                case REQUEST_GET_STATIC_ASSETS:
+                    return new GetStaticAssetsExecutor(ASSETS_RESOURCE).execute();
+
 //                case REQUEST_GET_ANALYTICS:
 //                    return AnalyticsExecutorSelector.executorFor(request, DBAccess.instance().sessionFactory()).execute();
-//                case REQUEST_GET_STATIC_ASSETS:
-//                    return new GetStaticAssetsExecutor(ASSETS_RESOURCE).execute();
                 case REQUEST_NOTIFICATIONS_INTERESTED_IN:
                     return new NotificationInterestedInExecutor().execute();
                 case REQUEST_STAGE_STATUS:
