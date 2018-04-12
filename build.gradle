@@ -21,16 +21,16 @@ version = '0.1-SNAPSHOT'
 
 // these values that go into plugin.xml
 project.ext.pluginDesc = [
-    id         : 'com.example.analytics.systemout',
+    id         : 'com.example.analytics',
     version    : project.version,
-    goCdVersion: '16.2.1',
+    goCdVersion: '18.3.0',
     name       : 'Example analytics Plugin',
     description: 'Some longer description of your plugin goes here',
     vendorName : 'Acme Corp',
     vendorUrl  : 'https://github.com/user/repository'
 ]
 
-// Force 1.7 compatibility to ensure that it works with older JVMs
+// Force 1.8 compatibility to ensure that it works with older JVMs
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
