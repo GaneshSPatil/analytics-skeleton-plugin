@@ -56,9 +56,11 @@ dependencies {
 }
 
 task packageAssets(type: Zip) {
-  from "${project.buildDir}/assets"
-  destinationDir = file('src/main/resources')
-  archiveName = 'assets.zip'
+  from 'assets/'
+  include '*'
+  include '*/*'
+  archiveName 'assets.zip'
+  destinationDir(file('src/main/resources'))
 }
 
 processResources {
