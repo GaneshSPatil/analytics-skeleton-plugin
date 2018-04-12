@@ -17,7 +17,6 @@
 package com.example.analytics;
 
 import com.example.analytics.executors.*;
-import com.example.analytics.requests.StageStatusRequest;
 import com.example.analytics.requests.ValidatePluginSettings;
 import com.thoughtworks.go.plugin.api.GoApplicationAccessor;
 import com.thoughtworks.go.plugin.api.GoPlugin;
@@ -56,11 +55,6 @@ public class ExamplePlugin implements GoPlugin {
                     return new GetStaticAssetsExecutor(ASSETS_RESOURCE).execute();
                 case REQUEST_GET_ANALYTICS:
                     return AnalyticsExecutorSelector.executorFor(request).execute();
-                case REQUEST_NOTIFICATIONS_INTERESTED_IN:
-                    return new NotificationInterestedInExecutor().execute();
-                case REQUEST_STAGE_STATUS:
-                    return StageStatusRequest.fromJSON(request.requestBody()).executor(pluginRequest).execute();
-
                 case PLUGIN_SETTINGS_GET_VIEW:
                     return new GetViewRequestExecutor().execute();
                 case PLUGIN_SETTINGS_GET_CONFIGURATION:
