@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,9 @@ import static com.example.analytics.Constants.PLUGIN_IDENTIFIER;
 public class ExamplePlugin implements GoPlugin {
 
     public static final Logger LOG = Logger.getLoggerFor(ExamplePlugin.class);
-
+    private static final String ASSETS_RESOURCE = "/assets.zip";
     private GoApplicationAccessor accessor;
     private PluginRequest pluginRequest;
-    private static final String ASSETS_RESOURCE = "/assets.zip";
 
     @Override
     public void initializeGoApplicationAccessor(GoApplicationAccessor accessor) {

@@ -32,5 +32,5 @@ public class GetStaticAssetsExecutor implements RequestExecutor {
 
     private byte[] readResource() throws IOException {
         return toByteArray(getClass().getResourceAsStream(resourcePath));
-}
+    }
 }

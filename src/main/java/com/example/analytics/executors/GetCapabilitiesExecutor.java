@@ -22,11 +22,6 @@ public class GetCapabilitiesExecutor implements RequestExecutor {
         CAPABILITIES_RESPONSE.put("supported_analytics", SUPPORTED_ANALYTICS);
     }
 
-    @Override
-    public GoPluginApiResponse execute() {
-        return DefaultGoPluginApiResponse.success(GSON.toJson(CAPABILITIES_RESPONSE));
-    }
-
     private static HashMap<String, String> metric(String id, String title, String type) {
         HashMap<String, String> chartMetric = new HashMap<>();
 
@@ -35,5 +30,10 @@ public class GetCapabilitiesExecutor implements RequestExecutor {
         chartMetric.put("type", type);
 
         return chartMetric;
+    }
+
+    @Override
+    public GoPluginApiResponse execute() {
+        return DefaultGoPluginApiResponse.success(GSON.toJson(CAPABILITIES_RESPONSE));
     }
 }

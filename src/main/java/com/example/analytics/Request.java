@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,10 +40,6 @@ public enum Request {
         this.requestName = requestName;
     }
 
-    public String requestName() {
-        return requestName;
-    }
-
     public static Request fromString(String requestName) {
         if (requestName != null) {
             for (Request request : Request.values()) {
@@ -54,6 +50,10 @@ public enum Request {
         }
 
         return null;
+    }
+
+    public String requestName() {
+        return requestName;
     }
 
     private static class Constants {

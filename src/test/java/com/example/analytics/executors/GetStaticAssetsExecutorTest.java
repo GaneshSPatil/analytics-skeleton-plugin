@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class GetStaticAssetsExecutorTest {
     @Test

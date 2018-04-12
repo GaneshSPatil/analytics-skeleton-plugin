@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ThoughtWorks, Inc.
+ * Copyright 2018 ThoughtWorks, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,14 +30,12 @@ import java.util.Map;
  */
 public class GetPluginConfigurationExecutor implements RequestExecutor {
 
-    private static final Gson GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-
     public static final Field GO_SERVER_URL = new NonBlankField("go_server_url", "Go Server URL", null, true, false, "0");
     public static final Field API_SERVER_URL = new NonBlankField("api_url", "API URL", null, true, false, "1");
     public static final Field API_USER = new NonBlankField("api_user", "API User", null, true, false, "2");
     public static final Field API_KEY = new NonBlankField("api_key", "API Key", null, true, false, "3");
-
     public static final Map<String, Field> FIELDS = new LinkedHashMap<>();
+    private static final Gson GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
     static {
         FIELDS.put(GO_SERVER_URL.key(), GO_SERVER_URL);
