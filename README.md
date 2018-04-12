@@ -1,7 +1,7 @@
-# Notification plugin skeleton
+# Analytics plugin skeleton
 
 This is merely a skeleton plugin that plugin developers can fork to get quickly
-started with writing notification plugins for GoCD.
+started with writing analytics plugins for GoCD.
 
 ## Getting started
 
@@ -9,7 +9,10 @@ started with writing notification plugins for GoCD.
 * Edit the `GetPluginConfigurationExecutor.java` class to add any configuration fields that should be shown in the view.
 * Edit the `plugin-settings.template.html` file which contains the view for the plugin settings page of your plugin.
 * Edit the `PluginSettings.java` file which contains the model for your settings.
-* Implement the `StageStatusRequestExecutor.java` class to get a basic notification plugin working.
+* Implement the following classes to get a basic analytics plugin working:
+  - `GetCapabilitiesExecutor.java`
+  - `GetStaticAssetsExecutor.java`
+  - `AnalyticsExecutorSelector.java`
 
 ## Building the code base
 
