@@ -55,9 +55,8 @@ public class ExamplePlugin implements GoPlugin {
                     return new GetCapabilitiesExecutor().execute();
                 case REQUEST_GET_STATIC_ASSETS:
                     return new GetStaticAssetsExecutor(ASSETS_RESOURCE).execute();
-
-//                case REQUEST_GET_ANALYTICS:
-//                    return AnalyticsExecutorSelector.executorFor(request, DBAccess.instance().sessionFactory()).execute();
+                case REQUEST_GET_ANALYTICS:
+                    return AnalyticsExecutorSelector.executorFor(request).execute();
                 case REQUEST_NOTIFICATIONS_INTERESTED_IN:
                     return new NotificationInterestedInExecutor().execute();
                 case REQUEST_STAGE_STATUS:
