@@ -11,5 +11,5 @@ build/
 !gradle-wrapper.jar
 
 #generated files
-**/*/out
-**/*/assets.zip
+out/
+assets.zip
