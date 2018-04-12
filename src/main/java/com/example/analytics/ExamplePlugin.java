@@ -67,9 +67,6 @@ public class ExamplePlugin implements GoPlugin {
                     return new GetPluginConfigurationExecutor().execute();
                 case PLUGIN_SETTINGS_VALIDATE_CONFIGURATION:
                     return ValidatePluginSettings.fromJSON(request.requestBody()).executor().execute();
-//                case PLUGIN_SETTINGS_CHANGE_NOTIFICATION:
-//                    reInitializePlugin(PluginSettings.fromJSON(request.requestBody()));
-//                    return new DefaultGoPluginApiResponse(SUCCESS_RESPONSE_CODE, "");\
                 default:
                     throw new UnhandledRequestTypeException(request.requestName());
             }
